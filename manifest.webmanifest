@@ -1,0 +1,17 @@
+{
+  "name": "Азбука: el alfabeto ruso",
+  "short_name": "Азбука",
+  "description": "El alfabeto ruso en imprenta y cursiva, con su sonido y ejercicios.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#E6EBF1",
+  "theme_color": "#E6EBF1",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

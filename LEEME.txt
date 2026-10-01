@@ -1,0 +1,30 @@
+Азбука: app instalable para el iPhone
+=====================================
+
+Archivos (súbelos todos juntos, tal cual, sin carpetas):
+  index.html, sw.js, manifest.webmanifest,
+  apple-touch-icon.png, icon-192.png, icon-512.png, icon-maskable-512.png
+
+1. Publicarla (mejor desde un ordenador)
+   - Crea una cuenta gratuita en github.com.
+   - Crea un repositorio nuevo llamado "azbuka", público.
+   - En el repositorio vacío, pulsa "uploading an existing file", arrastra
+     los siete archivos y confirma con "Commit changes".
+   - Ve a Settings > Pages. En "Source" elige "Deploy from a branch",
+     rama "main" y carpeta "/ (root)", y guarda.
+   - En uno o dos minutos tendrás la dirección:
+     https://TU-USUARIO.github.io/azbuka/
+
+2. Instalarla en el iPhone
+   - Abre esa dirección en Safari, con conexión, y espera a que cargue.
+   - Compartir > Añadir a pantalla de inicio > Añadir.
+   - Ábrela una vez desde el icono con conexión. A partir de ahí
+     funciona sin internet.
+
+3. Si más adelante cambias algo
+   - Sube el index.html nuevo y también sw.js con la línea VERSION
+     cambiada (azbuka-v2, azbuka-v3...). La app se actualiza sola la
+     siguiente vez que la abras con conexión.
+
+El audio usa la voz rusa del iPhone (Ajustes > Accesibilidad >
+Contenido leído > Voces). Con el teléfono en silencio no suena.

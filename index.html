@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Азбука: el alfabeto ruso en imprenta y cursiva</title>
+<meta name="description" content="El alfabeto ruso en imprenta y cursiva, con su sonido y ejercicios.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Азбука">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#E6EBF1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F131A" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Marck+Script&family=PT+Sans:wght@400;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#E6EBF1; --paper:#FAFCFE; --tile:#FFFFFF; --line:#D6DEE8;
+  --rule:#D5E0EC; --rule-strong:#A3B9D4; --margin:#E3848E;
+  --ink:#3B2A8C; --ink-soft:#7B6DC6; --ink-wash:#EEEBFB;
+  --red:#BF2F2B; --red-wash:#FCEBEA;
+  --text:#1B2030; --muted:#596276; --shadow:rgba(28,40,72,.28);
+  --serif:"PT Serif", Georgia, "Times New Roman", serif;
+  --sans:"PT Sans", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  --script:"Marck Script", "Bad Script", "PT Serif", Georgia, serif;
+  color-scheme: light;
+}
+:root[data-hand="2"]{ --script:"Bad Script", "Marck Script", "PT Serif", Georgia, serif; }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F131A; --paper:#161B24; --tile:#1C222D; --line:#2B3442;
+    --rule:#232D3B; --rule-strong:#3A4B64; --margin:#8C3E48;
+    --ink:#B7ABFF; --ink-soft:#8C80DA; --ink-wash:#272247;
+    --red:#FF6F66; --red-wash:#3A1D1E;
+    --text:#E6E9F0; --muted:#9AA3B6; --shadow:rgba(0,0,0,.55);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F131A; --paper:#161B24; --tile:#1C222D; --line:#2B3442;
+  --rule:#232D3B; --rule-strong:#3A4B64; --margin:#8C3E48;
+  --ink:#B7ABFF; --ink-soft:#8C80DA; --ink-wash:#272247;
+  --red:#FF6F66; --red-wash:#3A1D1E;
+  --text:#E6E9F0; --muted:#9AA3B6; --shadow:rgba(0,0,0,.55);
+  color-scheme: dark;
+}
+:root{ box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px); }
+html{ scroll-padding-top:env(safe-area-inset-top,0px); }
+*,*::before,*::after{ box-sizing:inherit; }
+body{ margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); font-size:17px; line-height:1.5; -webkit-text-size-adjust:100%; }
+img{ max-width:100%; }
+button, select, input{ font:inherit; color:inherit; }
+:focus-visible{ outline:3px solid var(--ink-soft); outline-offset:2px; }
+
+.wrap{ max-width:1080px; margin:0 auto; padding:28px 18px 56px; }
+
+/* Masthead */
+.masthead{ display:flex; flex-wrap:wrap; align-items:flex-end; gap:6px 28px; margin-bottom:18px; }
+.masthead h1{ font-family:var(--script); font-weight:400; color:var(--ink); font-size:clamp(64px, 13vw, 116px); line-height:.95; margin:0; }
+.lede{ font-family:var(--serif); font-size:19px; line-height:1.45; max-width:40ch; margin:0 0 10px; }
+
+/* Tabs and controls */
+.tabs{ display:flex; gap:4px 24px; overflow-x:auto; border-bottom:1px solid var(--line); scrollbar-width:none; }
+.tabs::-webkit-scrollbar{ display:none; }
+.tabs button{ background:none; border:0; border-bottom:2px solid transparent; padding:10px 1px 9px; margin-bottom:-1px; font-family:var(--serif); font-size:18px; color:var(--muted); cursor:pointer; white-space:nowrap; }
+.tabs button[aria-selected="true"]{ color:var(--ink); border-bottom-color:var(--ink); }
+.tabs button:hover{ color:var(--ink); }
+.controls{ display:flex; flex-wrap:wrap; align-items:center; gap:10px 22px; margin:14px 0 18px; font-size:15px; color:var(--muted); }
+.controls label{ display:inline-flex; align-items:center; gap:8px; }
+select{ background:var(--tile); border:1px solid var(--line); border-radius:6px; padding:6px 8px; color:var(--text); max-width:100%; }
+input[type="checkbox"]{ accent-color:var(--ink); width:16px; height:16px; }
+
+.audio-hint{ display:flex; flex-wrap:wrap; align-items:center; gap:6px 12px; background:var(--red-wash); border-left:3px solid var(--red); padding:9px 14px; border-radius:4px; font-size:15px; margin:0 0 16px; }
+.audio-help{ background:var(--tile); border:1px solid var(--line); border-radius:8px; padding:16px 20px 18px; margin:0 0 18px; font-size:15px; }
+.audio-help h2{ font-family:var(--serif); font-size:19px; font-weight:700; margin:0 0 6px; }
+.audio-help p{ margin:6px 0; max-width:70ch; }
+.audio-help ul{ margin:6px 0 10px; padding-left:20px; max-width:70ch; }
+.audio-help li{ margin:4px 0; }
+.audio-help .row{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; margin:10px 0; }
+.audio-help .status{ color:var(--ink); }
+.audio-help .status.bad{ color:var(--red); }
+
+/* The notebook sheet */
+.sheet{ position:relative; background-color:var(--paper);
+  background-image:repeating-linear-gradient(to bottom, transparent 0 31px, var(--rule) 31px 32px);
+  background-position:0 18px; border-radius:4px; padding:26px 22px 34px 68px;
+  box-shadow:0 1px 0 var(--line), 0 18px 36px -24px var(--shadow); }
+.sheet::before{ content:""; position:absolute; top:0; bottom:0; left:46px; width:2px; background:var(--margin); opacity:.85; }
+.intro{ font-family:var(--serif); font-size:17px; max-width:62ch; margin:0 0 20px; }
+.intro .cur-inline{ font-size:1.45em; }
+
+/* Common text bits */
+.pl{ font-family:var(--serif); }
+.cur-inline{ font-family:var(--script); color:var(--ink); font-size:1.5em; line-height:1; }
+.muted{ color:var(--muted); }
+.btn{ display:inline-flex; align-items:center; gap:6px; background:transparent; color:var(--ink); border:1.5px solid var(--ink); border-radius:999px; padding:6px 14px; font-size:15px; line-height:1.3; cursor:pointer; }
+.btn:hover{ background:var(--ink-wash); }
+.btn.primary{ background:var(--ink); color:var(--paper); }
+.btn.primary:hover{ filter:brightness(1.08); }
+.btn.small{ padding:3px 10px; font-size:14px; }
+.btn.big{ font-size:18px; padding:10px 22px; }
+.btn[disabled]{ opacity:.45; cursor:default; }
+
+/* Alphabet */
+.alpha{ display:grid; grid-template-columns:minmax(0,1fr) minmax(270px, 350px); gap:22px; align-items:start; }
+.grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(78px, 1fr)); gap:9px; }
+.tile{ position:relative; background:var(--tile); border:1px solid var(--line); border-radius:6px; padding:8px 4px 13px; text-align:center; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:0; transition:opacity .2s; }
+.tile .p{ font-family:var(--serif); font-size:28px; line-height:1.15; }
+.tile .c{ font-family:var(--script); font-size:25px; line-height:1.2; color:var(--ink); }
+.tile .bar{ position:absolute; left:9px; right:9px; bottom:5px; height:3px; background:var(--line); border-radius:2px; overflow:hidden; }
+.tile .bar i{ display:block; height:100%; width:0; background:var(--ink-soft); }
+.tile:hover{ border-color:var(--ink-soft); }
+.tile[aria-pressed="true"]{ border-color:var(--ink); box-shadow:inset 0 0 0 1px var(--ink); }
+.tile.dim{ opacity:.32; }
+.detail{ background:var(--tile); border:1px solid var(--line); border-radius:8px; padding:18px 20px 20px; position:sticky; top:calc(14px + env(safe-area-inset-top,0px)); }
+.detail .pair{ display:flex; align-items:baseline; gap:12px 22px; flex-wrap:wrap; }
+.detail .big-p{ font-family:var(--serif); font-size:72px; line-height:1; }
+.detail .big-c{ font-family:var(--script); font-size:76px; line-height:1; color:var(--ink); }
+.detail .name{ margin:12px 0 10px; }
+.detail .tag{ display:inline-block; font-size:13px; color:var(--ink); border:1px solid var(--ink-soft); border-radius:999px; padding:0 9px; margin-left:4px; vertical-align:2px; }
+.detail .actions{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:6px; }
+.detail h3{ font-family:var(--serif); font-size:16px; font-weight:700; margin:16px 0 2px; }
+.detail p{ margin:0; }
+.detail .ex-p{ font-family:var(--serif); font-size:24px; }
+.detail .ex-c{ font-family:var(--script); font-size:30px; color:var(--ink); margin-left:10px; }
+.detail u{ text-decoration-color:var(--red); text-decoration-thickness:2px; text-underline-offset:4px; }
+.detail .stat{ margin-top:16px; font-size:14px; color:var(--muted); }
+
+/* Quizzes */
+.quiz-head{ display:flex; justify-content:space-between; gap:12px; font-size:15px; color:var(--muted); }
+.prompt{ min-height:170px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; margin:14px 0 18px; text-align:center; }
+.prompt .glyph{ font-family:var(--script); color:var(--ink); font-size:clamp(96px, 24vw, 150px); line-height:1; }
+.prompt .word-p{ font-family:var(--serif); font-size:clamp(40px, 10vw, 66px); line-height:1.1; }
+.prompt .word-c{ font-family:var(--script); color:var(--ink); font-size:clamp(46px, 11vw, 78px); line-height:1.1; }
+.prompt .say{ font-family:var(--serif); font-size:44px; }
+.prompt .hint{ margin:0; color:var(--muted); font-size:15px; }
+.options{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; max-width:540px; margin:0 auto; }
+.opt{ position:relative; background:var(--tile); border:1.5px solid var(--line); border-radius:8px; padding:14px 10px; font-family:var(--serif); font-size:28px; line-height:1.2; cursor:pointer; min-height:66px; }
+.opt.lat{ font-size:21px; }
+.opt .k{ position:absolute; left:9px; top:5px; font-family:var(--sans); font-size:12px; color:var(--muted); }
+.opt:hover:not([disabled]){ border-color:var(--ink-soft); }
+.opt[disabled]{ cursor:default; }
+.opt.right{ border-color:var(--ink); background:var(--ink-wash); }
+.opt.wrong{ border-color:var(--red); background:var(--red-wash); }
+.opt.right::after, .opt.wrong::after{ position:absolute; right:10px; top:4px; font-family:var(--sans); font-size:18px; }
+.opt.right::after{ content:"✓"; color:var(--ink); }
+.opt.wrong::after{ content:"✗"; color:var(--red); }
+.feedback{ min-height:3.2em; max-width:62ch; margin:18px auto 0; text-align:center; }
+.feedback .ok{ color:var(--ink); }
+.feedback .ko{ color:var(--red); }
+.next-row{ text-align:center; margin-top:12px; }
+.result{ text-align:center; padding:10px 0 4px; }
+.stamp{ display:inline-flex; align-items:center; gap:18px; margin:6px 0 10px; }
+.grade{ font-family:var(--script); color:var(--red); font-size:150px; line-height:.85; display:inline-block; transform:rotate(-8deg); animation:ink-in .55s ease-out both; }
+.grade-word{ font-family:var(--script); color:var(--red); font-size:clamp(28px, 6vw, 40px); display:inline-block; transform:rotate(-5deg); animation:ink-in .7s ease-out .35s both; }
+@keyframes ink-in{ from{ clip-path:inset(0 100% 0 0); } to{ clip-path:inset(0 0 0 0); } }
+.result p{ margin:6px 0; }
+.result .again{ margin-top:14px; }
+.subcontrols{ display:flex; flex-wrap:wrap; gap:10px 22px; align-items:center; font-size:15px; color:var(--muted); margin:-6px 0 6px; }
+.subcontrols label{ display:inline-flex; align-items:center; gap:8px; }
+
+/* Writing pad */
+.pad-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+.pad-title{ display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; justify-content:center; text-align:center; }
+.pad-title .pl{ font-size:40px; line-height:1; }
+.pad-title .cur-inline{ font-size:46px; }
+.pad-tools{ display:flex; flex-wrap:wrap; align-items:center; gap:10px 18px; margin-bottom:12px; font-size:15px; color:var(--muted); }
+.seg{ display:inline-flex; border:1.5px solid var(--ink); border-radius:999px; overflow:hidden; }
+.seg button{ background:transparent; border:0; padding:5px 14px; color:var(--ink); cursor:pointer; font-size:15px; }
+.seg button[aria-checked="true"]{ background:var(--ink); color:var(--paper); }
+.pad{ position:relative; width:100%; height:260px; background:var(--tile); border:1px solid var(--line); border-radius:6px; overflow:hidden; }
+.pad canvas{ position:absolute; left:0; top:0; display:block; }
+#padInk{ touch-action:none; cursor:crosshair; }
+.pad-note{ margin:12px 0 0; max-width:62ch; }
+
+footer.foot{ margin-top:22px; font-size:14px; color:var(--muted); display:flex; flex-wrap:wrap; gap:10px 24px; justify-content:space-between; align-items:flex-start; }
+footer.foot p{ margin:0; max-width:70ch; }
+.linkbtn{ background:none; border:0; padding:0; color:var(--ink); text-decoration:underline; text-underline-offset:3px; cursor:pointer; font-size:14px; }
+
+[hidden]{ display:none !important; }
+
+@media (max-width: 780px){
+  .alpha{ grid-template-columns:minmax(0,1fr); }
+  .detail{ position:static; order:-1; }
+}
+@media (max-width: 560px){
+  .wrap{ padding:18px 12px 40px; }
+  .tabs{ gap:4px 14px; }
+  .tabs button{ font-size:16px; }
+  .controls select{ max-width:62vw; }
+  .sheet{ padding:20px 14px 26px 36px; }
+  .sheet::before{ left:22px; }
+  .grid{ grid-template-columns:repeat(auto-fill, minmax(64px, 1fr)); gap:7px; }
+  .tile .p{ font-size:24px; } .tile .c{ font-size:22px; }
+  .opt{ font-size:24px; } .opt.lat{ font-size:18px; }
+  .pad{ height:220px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .grade, .grade-word{ animation:none; }
+  .tile{ transition:none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <h1 lang="ru">Азбука</h1>
+    <p class="lede">El alfabeto ruso en imprenta y en cursiva, con su sonido. Treinta y tres letras y cinco maneras de practicarlas.</p>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Ejercicios">
+    <button role="tab" id="t-alfabeto" data-tab="alfabeto" aria-selected="true" aria-controls="tab-alfabeto">Alfabeto</button>
+    <button role="tab" id="t-escuchar" data-tab="escuchar" aria-selected="false" aria-controls="tab-escuchar" tabindex="-1">Escuchar</button>
+    <button role="tab" id="t-cursiva" data-tab="cursiva" aria-selected="false" aria-controls="tab-cursiva" tabindex="-1">Cursiva</button>
+    <button role="tab" id="t-leer" data-tab="leer" aria-selected="false" aria-controls="tab-leer" tabindex="-1">Leer</button>
+    <button role="tab" id="t-escribir" data-tab="escribir" aria-selected="false" aria-controls="tab-escribir" tabindex="-1">Escribir</button>
+  </nav>
+
+  <div class="controls">
+    <label>Practicar
+      <select id="groupSel">
+        <option value="all">Las 33 letras</option>
+        <option value="g1">Familiares: А К М О Т</option>
+        <option value="g2">Falsos amigos: В Е Н Р С У Х</option>
+        <option value="g3">Forma nueva: Б Г Д З И Й Л П Ф Э</option>
+        <option value="g4">Sonidos nuevos: Ё Ж Ц Ч Ш Щ Ы Ю Я</option>
+        <option value="g5">Signos: Ъ Ь</option>
+        <option value="weak">Mis letras más flojas</option>
+      </select>
+    </label>
+    <label>Cursiva
+      <select id="handSel">
+        <option value="1">Mano 1</option>
+        <option value="2">Mano 2</option>
+      </select>
+    </label>
+    <label><input type="checkbox" id="slow"> Audio lento</label>
+    <button class="btn small" id="openAudio" type="button">Ajustes de audio</button>
+  </div>
+
+  <p class="audio-hint" id="audioHint" hidden><span>¿No oyes nada?</span><button class="linkbtn" id="hintOpen" type="button">Ver cómo activar el audio</button></p>
+
+  <section class="audio-help" id="audioHelp" hidden aria-labelledby="audioHelpTitle">
+    <h2 id="audioHelpTitle">Audio</h2>
+    <p>La pronunciación la pone la voz rusa de tu navegador o de tu sistema. Pulsa probar: deberías oír «Привет! Это проверка звука».</p>
+    <div class="row">
+      <button class="btn primary" id="testAudio" type="button">▶ Probar el audio</button>
+      <label>Voz <select id="voiceSel"></select></label>
+    </div>
+    <p class="status" id="audioStatus" aria-live="polite"></p>
+    <p>Si no se oye nada, lo más habitual es una de estas cosas (los nombres de los menús pueden variar según la versión):</p>
+    <ul>
+      <li><b>iPhone o iPad:</b> quita el modo silencio y sube el volumen; Safari no lee en voz alta con el teléfono en silencio. La voz rusa está en Ajustes › Accesibilidad › Contenido leído › Voces.</li>
+      <li><b>Android:</b> en Ajustes › Accesibilidad › Salida de texto a voz, instala los datos de voz en ruso del motor de Google.</li>
+      <li><b>Windows:</b> Configuración › Hora e idioma › Voz › Agregar voces › Ruso. Después cierra y vuelve a abrir el navegador.</li>
+      <li><b>Mac:</b> Ajustes del Sistema › Accesibilidad › Contenido leído › Voz del sistema › Gestionar voces › Ruso.</li>
+      <li><b>Firefox</b> usa las voces del sistema, así que necesita el paso de tu sistema. Chrome en ordenador suele traer ya una voz rusa propia.</li>
+    </ul>
+    <button class="linkbtn" id="closeAudio" type="button">Cerrar</button>
+  </section>
+
+  <main class="sheet">
+    <section id="tab-alfabeto" role="tabpanel" aria-labelledby="t-alfabeto">
+      <p class="intro">Toca una letra para oírla y ver cómo se escribe a mano. La barra bajo cada letra crece con tus aciertos en los ejercicios.</p>
+      <div class="alpha">
+        <div class="grid" id="grid"></div>
+        <aside class="detail" id="detail" aria-live="polite"></aside>
+      </div>
+    </section>
+
+    <section id="tab-escuchar" role="tabpanel" aria-labelledby="t-escuchar" hidden>
+      <p class="intro">Escucha el nombre de la letra y elige cuál es. Puedes responder con las teclas 1 a 4.</p>
+      <div id="quiz-escuchar"></div>
+    </section>
+
+    <section id="tab-cursiva" role="tabpanel" aria-labelledby="t-cursiva" hidden>
+      <p class="intro">La letra manuscrita rusa no siempre se parece a la de imprenta: <span class="cur-inline" lang="ru">т</span> se escribe como una m, <span class="cur-inline" lang="ru">и</span> como una u y <span class="cur-inline" lang="ru">д</span> como una g. Elige la letra de imprenta que corresponde.</p>
+      <div id="quiz-cursiva"></div>
+    </section>
+
+    <section id="tab-leer" role="tabpanel" aria-labelledby="t-leer" hidden>
+      <p class="intro">Lee la palabra y elige cómo suena. Ojo: la o sin acento suena casi como una a, así que fíjate en el sonido y no solo en la letra.</p>
+      <div class="subcontrols">
+        <label>Vocabulario
+          <select id="wordSet">
+            <option value="basic">Cotidiano</option>
+            <option value="strat">Defensa y doctrina</option>
+          </select>
+        </label>
+        <label>Mostrar en
+          <select id="readMode">
+            <option value="print">Imprenta</option>
+            <option value="cursive">Cursiva</option>
+            <option value="mix">Alternar</option>
+          </select>
+        </label>
+      </div>
+      <div id="quiz-leer"></div>
+    </section>
+
+    <section id="tab-escribir" role="tabpanel" aria-labelledby="t-escribir" hidden>
+      <p class="intro">Copia la letra sobre la pauta inclinada, como en un cuaderno de caligrafía ruso. El primer modelo va entero; los demás, en claro para repasarlos. Con el dedo, un lápiz o el ratón.</p>
+      <div class="pad-head">
+        <button class="btn" id="padPrev" type="button" aria-label="Letra anterior">←</button>
+        <div class="pad-title">
+          <span class="pl" id="padPrint" lang="ru"></span>
+          <span class="cur-inline" id="padCursive" lang="ru"></span>
+          <button class="btn small" id="padSay" type="button">▶ Oír</button>
+        </div>
+        <button class="btn" id="padNext" type="button" aria-label="Letra siguiente">→</button>
+      </div>
+      <div class="pad-tools">
+        <span class="seg" role="radiogroup" aria-label="Qué copiar">
+          <button type="button" role="radio" aria-checked="true" data-mode="letter">Letra</button>
+          <button type="button" role="radio" aria-checked="false" data-mode="word">Palabra</button>
+        </span>
+        <label><input type="checkbox" id="padGuide" checked> Mostrar modelo</label>
+        <button class="btn small" id="padClear" type="button">Borrar</button>
+      </div>
+      <div class="pad" id="pad">
+        <canvas id="padBg" aria-hidden="true"></canvas>
+        <canvas id="padInk" aria-label="Zona para escribir a mano"></canvas>
+      </div>
+      <p class="pad-note" id="padNote"></p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Las dos cursivas son tipografías que imitan la letra manuscrita; cada mano tiene sus variantes, así que toma como referencia final los cuadernos de tu clase. El audio usa la voz rusa de tu navegador, y las pronunciaciones aproximadas están escritas para hispanohablantes.</p>
+    <button class="linkbtn" id="resetProg" type="button">Borrar mi progreso</button>
+    <p id="offlineNote" hidden>Lista para usar sin conexión.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+'use strict';
+var $ = function(s, r){ return (r || document).querySelector(s); };
+var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+/* ---------- Data ---------- */
+// up, lo, name (ru, for audio), name (latin), group, sound, example, pronunciation, meaning, handwriting note
+var RAW = [
+ ["А","а","а","a",1,"Como la «a» de «casa».","мама","máma","mamá",""],
+ ["Б","б","бэ","be",3,"Como la «b» de «barco», siempre con los labios cerrados, también entre vocales. Al final de palabra suena «p».","банк","bank","banco","La minúscula se parece a un 6 o a una delta griega."],
+ ["В","в","вэ","ve",2,"Una «v» de verdad, con los dientes sobre el labio inferior, como en francés. Al final de palabra suena «f». Parece una B, pero no lo es.","вода","vadá","agua",""],
+ ["Г","г","гэ","gue",3,"Siempre «g» de «gato», nunca como la «j» española. En las terminaciones -ого y -его se lee «v».","гора","gará","montaña",""],
+ ["Д","д","дэ","de",3,"Una «d» firme, con la lengua en los dientes, nunca suave como en «nada». Al final de palabra suena «t».","дом","dom","casa","La minúscula se escribe como una g latina (o como ∂)."],
+ ["Е","е","е","ye",2,"«Ye» a principio de palabra o tras vocal; tras consonante, «e» y ablanda esa consonante. Sin acento se acerca a «i».","нет","niet","no","Como una e latina."],
+ ["Ё","ё","ё","yo",4,"«Yo», y siempre lleva el acento. En muchos textos se escribe sin los puntos, como si fuera una е.","ёлка","yólka","abeto",""],
+ ["Ж","ж","жэ","zhe",4,"Como la «j» francesa de «jour», pero más dura y profunda.","журнал","zhurnál","revista","Tres trazos enlazados, como )|( escrito de un tirón."],
+ ["З","з","зэ","ze",3,"Una «s» sonora, como la «z» francesa o inglesa de «zoo». No es la «z» española.","зима","zimá","invierno","Como un 3 con una cola que baja de la línea."],
+ ["И","и","и","i",3,"«I» de «isla»; ablanda la consonante que la precede.","мир","mir","paz; mundo","La minúscula es idéntica a una u latina."],
+ ["Й","й","и краткое","i kratkoye",3,"Una «y» breve, como en «hoy» o «muy». Forma diptongo con la vocal anterior.","чай","chái","té","Una u latina con un pequeño arco encima: ŭ."],
+ ["К","к","ка","ka",1,"«K» de «casa».","кот","kot","gato",""],
+ ["Л","л","эль","el",3,"Una «l» más oscura que la española ante а, о, у, ы; suave ante е, и, ю, я, ь.","лампа","lámpa","lámpara","Empieza con un pequeño gancho abajo a la izquierda."],
+ ["М","м","эм","em",1,"«M» de «mamá».","мост","most","puente","Como л, empieza con un gancho abajo: no es la m latina."],
+ ["Н","н","эн","en",2,"«N» de «nota». Parece una H, pero es una «n».","нос","nos","nariz",""],
+ ["О","о","о","o",1,"«O» cuando lleva el acento; sin acento suena casi «a»: молоко se lee «malakó».","молоко","malakó","leche",""],
+ ["П","п","пэ","pe",3,"«P» de «pato», sin soplo de aire.","парк","park","parque","La minúscula es idéntica a una n latina."],
+ ["Р","р","эр","er",2,"Una «r» vibrante, entre la de «caro» y la de «perro». Parece una P, pero es una «r».","рука","ruká","mano","Como una p latina."],
+ ["С","с","эс","es",2,"Siempre «s» sorda, como en «sol». Parece una C, pero es una «s».","сок","sok","zumo",""],
+ ["Т","т","тэ","te",1,"«T» de «tomate».","такси","taksí","taxi","La minúscula se escribe como una m latina, a veces con una raya encima."],
+ ["У","у","у","u",2,"«U» de «luna». Parece una Y, pero es una «u».","суп","sup","sopa","Como una y latina."],
+ ["Ф","ф","эф","ef",3,"«F» de «foca».","факт","fakt","hecho",""],
+ ["Х","х","ха","ja",2,"Como la «j» española, pero más suave, sin rascar. Parece una X, pero es una «j».","хор","jor","coro","Como una x latina."],
+ ["Ц","ц","цэ","tse",4,"«Ts», como en «pizza» dicho a la italiana.","центр","tsentr","centro","Como una u con una pequeña cola abajo a la derecha."],
+ ["Ч","ч","че","che",4,"«Ch» de «chico».","час","chas","hora",""],
+ ["Ш","ш","ша","sha",4,"Una «sh» dura, con la lengua más atrás que en el inglés «show».","школа","shkóla","escuela","Tres picos, como una w puntiaguda; a veces con una raya debajo para no confundirla con т."],
+ ["Щ","щ","ща","shcha",4,"Una «sh» larga y suave, con la lengua pegada al paladar.","щи","shchi","sopa de col","Como ш con una pequeña cola abajo."],
+ ["Ъ","ъ","твёрдый знак","tviórdy znak",5,"No suena. Separa la consonante de la vocal que sigue, que se pronuncia con «y»: объект se lee «abiékt».","объект","abiékt","objeto",""],
+ ["Ы","ы","ы","y",4,"Vocal sin equivalente en español: una «i» con la lengua retraída hacia atrás y los labios sin redondear.","мы","my","nosotros","Un ь unido a una i."],
+ ["Ь","ь","мягкий знак","miájkiy znak",5,"No suena. Ablanda la consonante anterior, como si añadiera una «i» muy breve.","мать","mat'","madre",""],
+ ["Э","э","э","e",3,"«E» de «mesa», sin la «y» inicial de la е.","это","éta","esto",""],
+ ["Ю","ю","ю","yu",4,"«Yu» de «yugo»; tras consonante, «u» y ablanda la consonante.","юмор","yúmar","humor","Un trazo vertical unido a una o."],
+ ["Я","я","я","ya",4,"«Ya» de «yate»; tras consonante, «a» y ablanda la consonante.","яхта","yájta","yate","Empieza con un gancho, como л y м."]
+];
+var GROUP_TAG = {1:"Familiar",2:"Falso amigo",3:"Forma nueva",4:"Sonido nuevo",5:"Signo"};
+var LETTERS = RAW.map(function(r, i){
+  return {i:i, up:r[0], lo:r[1], nameRu:r[2], nameLat:r[3], group:r[4], sound:r[5], word:r[6], pron:r[7], meaning:r[8], hand:r[9]};
+});
+var BY = {}; LETTERS.forEach(function(l){ BY[l.lo] = l; });
+
+var WORDS = {
+  basic: [
+    ["мама","máma","mamá"],["кот","kot","gato"],["дом","dom","casa"],["вода","vadá","agua"],
+    ["нос","nos","nariz"],["сок","sok","zumo"],["парк","park","parque"],["суп","sup","sopa"],
+    ["чай","chái","té"],["мир","mir","paz; mundo"],["школа","shkóla","escuela"],["рука","ruká","mano"],
+    ["зима","zimá","invierno"],["хор","jor","coro"],["центр","tsentr","centro"],["час","chas","hora"],
+    ["это","éta","esto"],["журнал","zhurnál","revista"],["такси","taksí","taxi"],["метро","mitró","metro"],
+    ["Москва","maskvá","Moscú"],["Россия","rassíya","Rusia"],["спасибо","spasíba","gracias"],["привет","privét","hola"],
+    ["ресторан","ristarán","restaurante"],["север","siévir","norte"],["телефон","tilifón","teléfono"],["университет","univirsitiét","universidad"]
+  ],
+  strat: [
+    ["ракета","rakiéta","misil; cohete"],["договор","dagavór","tratado"],["оружие","arúzhiye","armas"],
+    ["ядерный","yádirny","nuclear"],["сдерживание","zdiérzhivaniye","disuasión"],["безопасность","bizapásnast'","seguridad"],
+    ["угроза","ugróza","amenaza"],["война","vainá","guerra"],["армия","ármiya","ejército"],
+    ["доктрина","daktrína","doctrina"],["стратегия","stratiéguiya","estrategia"],["испытание","ispytániye","ensayo, prueba"],
+    ["запуск","zápusk","lanzamiento"],["боеголовка","bayigalófka","ojiva"],["щит","shchit","escudo"],
+    ["удар","udár","ataque, golpe"],["флот","flot","flota"],["Кремль","kreml'","Kremlin"],
+    ["сила","síla","fuerza"],["противник","pratívnik","adversario"]
+  ]
+};
+
+// Letters that sound alike (for the listening quiz) and look alike in handwriting (for the cursive quiz)
+var SOUND_CONF = {"б":"пв","п":"бф","в":"фб","ф":"вп","г":"кх","к":"гх","х":"кг","д":"тз","т":"дц","ж":"шз","ш":"жщ","щ":"шч","ч":"щц","ц":"чс","з":"сж","с":"зц","е":"эё","э":"еы","ё":"ою","о":"ёа","и":"ый","ы":"иь","й":"иы","ю":"уё","у":"юо","я":"аэ","а":"яо","ъ":"ьы","ь":"ъй","л":"рм","р":"лн","м":"нл","н":"мл"};
+var SHAPE_CONF = {"т":"мшп","ш":"тщи","щ":"шцт","п":"нил","н":"пюк","и":"уйц","у":"ичд","й":"иуц","д":"бзг","б":"двз","г":"зчт","з":"эгд","л":"мяп","м":"лтш","я":"лмы","в":"бдь","ь":"ъыб","ъ":"ьыб","ы":"ьъю","ц":"щиу","ч":"угь","ж":"хкз","х":"жкэ","к":"хнж","р":"фвь","ф":"рвю","ю":"ыно","э":"зес","е":"эёс","ё":"еэо","о":"асю","а":"одя","с":"еэо"};
+
+var TR = {"а":"a","б":"b","в":"v","г":"g","д":"d","е":"e","ё":"yo","ж":"zh","з":"z","и":"i","й":"y","к":"k","л":"l","м":"m","н":"n","о":"o","п":"p","р":"r","с":"s","т":"t","у":"u","ф":"f","х":"j","ц":"ts","ч":"ch","ш":"sh","щ":"shch","ъ":"","ы":"y","ь":"'","э":"e","ю":"yu","я":"ya"};
+var FALSE_FRIENDS = {"в":"b","н":"h","р":"p","с":"c","у":"y","х":"x"};
+
+/* ---------- Helpers ---------- */
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function stripAccents(s){ return s.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
+function naiveReading(word){
+  var w = word.toLowerCase(), chars = Array.from(w);
+  if (!chars.some(function(c){ return FALSE_FRIENDS[c]; })) return null;
+  return chars.map(function(c){ return FALSE_FRIENDS[c] || (TR[c] !== undefined ? TR[c] : c); }).join("");
+}
+function cssVar(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- Progress (kept in this browser only) ---------- */
+var STORE_KEY = "azbuka-progreso-v1";
+var prog = {};
+try { prog = JSON.parse(localStorage.getItem(STORE_KEY) || "{}") || {}; } catch (e) { prog = {}; }
+function saveProg(){ try { localStorage.setItem(STORE_KEY, JSON.stringify(prog)); } catch (e) {} }
+function record(lo, ok){
+  var s = prog[lo] || (prog[lo] = {ok:0, n:0});
+  s.n++; if (ok) s.ok++;
+  saveProg(); refreshTiles();
+  if (currentLetter && currentLetter.lo === lo) renderDetail(currentLetter);
+}
+function accuracy(lo){ var s = prog[lo]; return s && s.n ? s.ok / s.n : null; }
+
+/* ---------- Pools ---------- */
+function pool(){
+  var g = $("#groupSel").value;
+  if (g === "weak"){
+    var tried = LETTERS.filter(function(l){ return prog[l.lo] && prog[l.lo].n; });
+    if (tried.length < 4) return LETTERS.slice();
+    return tried.sort(function(a, b){ return accuracy(a.lo) - accuracy(b.lo); }).slice(0, 8);
+  }
+  var n = Number(g.slice(1));
+  return g === "all" ? LETTERS.slice() : LETTERS.filter(function(l){ return l.group === n; });
+}
+var lastPicked = null;
+function pickLetter(){
+  var p = pool();
+  var cands = p.length > 1 ? p.filter(function(l){ return l.lo !== lastPicked; }) : p;
+  var w = cands.map(function(l){ var s = prog[l.lo]; if (!s || !s.n) return 2.2; return 0.5 + 2.5 * (1 - s.ok / s.n); });
+  var total = w.reduce(function(a, b){ return a + b; }, 0), r = Math.random() * total;
+  for (var i = 0; i < cands.length; i++){ r -= w[i]; if (r <= 0){ lastPicked = cands[i].lo; return cands[i]; } }
+  lastPicked = cands[cands.length - 1].lo; return cands[cands.length - 1];
+}
+function distractors(target, conf){
+  var out = [];
+  shuffle(Array.from(conf[target.lo] || "")).forEach(function(c){ if (out.length < 2 && BY[c] && BY[c] !== target) out.push(BY[c]); });
+  var rest = shuffle(LETTERS.filter(function(l){ return l !== target && out.indexOf(l) < 0; }));
+  while (out.length < 3) out.push(rest.shift());
+  return out;
+}
+
+/* ---------- Speech ---------- */
+var hasTTS = ("speechSynthesis" in window) && ("SpeechSynthesisUtterance" in window);
+var synth = hasTTS ? window.speechSynthesis : null;
+var ruVoices = [], voiceCount = 0, voicesLoaded = false, chosenVoice = "";
+var audio = {ok:false, lastVoice:"", lastError:""};
+var liveUtterance = null, watchdog = null;
+try { chosenVoice = localStorage.getItem("azbuka-voz") || ""; } catch (e) {}
+
+function voiceScore(v){
+  var s = 0;
+  if (v.localService) s += 4;                       // installed voices do not depend on the network
+  if (/milena|yuri|katya|svetlana|dmitry|irina|pavel/i.test(v.name)) s += 2;
+  if (/google/i.test(v.name)) s += 1;
+  return s;
+}
+function loadVoices(){
+  if (!hasTTS) return;
+  var vs = [];
+  try { vs = synth.getVoices() || []; } catch (e) {}
+  voiceCount = vs.length;
+  ruVoices = vs.filter(function(v){ return /^ru([-_]|$)/i.test(v.lang || "") || /russian|русск/i.test(v.name || ""); })
+               .sort(function(a, b){ return voiceScore(b) - voiceScore(a); });
+  if (vs.length) voicesLoaded = true;
+  fillVoiceSelect(); renderAudioStatus();
+}
+function voiceOrder(){
+  var list = ruVoices.slice();
+  if (chosenVoice){
+    var i = list.map(function(v){ return v.voiceURI; }).indexOf(chosenVoice);
+    if (i > 0) list.unshift(list.splice(i, 1)[0]);
+  }
+  list.push(null);                                  // last resort: let the browser pick by language
+  return list;
+}
+function speak(text){
+  if (!hasTTS){ showHint(); renderAudioStatus(); return; }
+  attemptSpeak(text, 0);
+}
+function attemptSpeak(text, idx){
+  var order = voiceOrder(), v = order[idx];
+  var u = new SpeechSynthesisUtterance(text);
+  u.lang = v && v.lang ? v.lang.replace("_", "-") : "ru-RU";
+  if (v) u.voice = v;
+  u.rate = $("#slow").checked ? 0.6 : 0.9;
+  u.pitch = 1; u.volume = 1;
+  var started = false, finished = false;
+  u.onstart = function(){
+    started = true; audio.ok = true; audio.lastError = "";
+    audio.lastVoice = v ? v.name : "la que elige el navegador";
+    $("#audioHint").hidden = true; renderAudioStatus();
+  };
+  u.onend = function(){ finished = true; };
+  u.onerror = function(ev){
+    var err = (ev && ev.error) || "error";
+    if (err === "interrupted" || err === "canceled") return;
+    audio.lastError = err;
+    if (!started && err !== "not-allowed" && idx + 1 < order.length){ attemptSpeak(text, idx + 1); return; }
+    showHint(); renderAudioStatus();
+  };
+  liveUtterance = u;                                 // keep a reference: Chrome can drop unreferenced utterances
+  var go = function(){
+    try { synth.resume(); } catch (e) {}
+    try { synth.speak(u); } catch (e) { audio.lastError = String((e && e.message) || e); showHint(); renderAudioStatus(); }
+  };
+  if (synth.speaking || synth.pending){ synth.cancel(); setTimeout(go, 90); }   // Chrome drops a speak() issued right after cancel()
+  else go();
+  clearTimeout(watchdog);
+  watchdog = setTimeout(function(){
+    if (!started && !finished && liveUtterance === u){
+      try { synth.cancel(); } catch (e) {}           // unstick the queue for the next try
+      if (!audio.lastError) audio.lastError = "la voz no respondió";
+      showHint(); renderAudioStatus();
+    }
+  }, 3000);
+}
+function showHint(){ if ($("#audioHelp").hidden) $("#audioHint").hidden = false; }
+function fillVoiceSelect(){
+  var sel = $("#voiceSel"); if (!sel) return;
+  var cur = chosenVoice;
+  sel.innerHTML = "";
+  if (!ruVoices.length){
+    var o = document.createElement("option"); o.value = ""; o.textContent = "La que elija el navegador"; sel.appendChild(o);
+  } else {
+    ruVoices.forEach(function(v){
+      var o = document.createElement("option");
+      o.value = v.voiceURI; o.textContent = v.name + (v.localService ? "" : " (en línea)");
+      sel.appendChild(o);
+    });
+    if (cur && ruVoices.some(function(v){ return v.voiceURI === cur; })) sel.value = cur;
+  }
+}
+function renderAudioStatus(){
+  var el = $("#audioStatus"); if (!el) return;
+  var msg, bad = false;
+  if (!hasTTS){ msg = "Este navegador no puede leer texto en voz alta. Prueba con Chrome, Edge o Safari."; bad = true; }
+  else if (voicesLoaded && !ruVoices.length){ msg = "No encuentro ninguna voz rusa instalada (hay " + voiceCount + " voces de otros idiomas). Añade el ruso a las voces de tu sistema con los pasos de abajo y vuelve a abrir la página."; bad = true; }
+  else if (!voicesLoaded){ msg = "Tu navegador no da la lista de voces; la página intentará usar la voz rusa del sistema."; }
+  else { msg = ruVoices.length === 1 ? "Hay una voz rusa disponible." : "Hay " + ruVoices.length + " voces rusas disponibles."; }
+  if (audio.ok) msg += " Última reproducción correcta con: " + audio.lastVoice + ".";
+  if (audio.lastError){
+    var why = {"not-allowed":"el navegador ha bloqueado el audio; vuelve a pulsar el botón", "network":"la voz necesita conexión y no la ha conseguido", "synthesis-unavailable":"no hay voz disponible", "language-unavailable":"no hay voz para el ruso", "voice-unavailable":"esa voz no está disponible", "synthesis-failed":"la voz ha fallado", "audio-busy":"el audio está ocupado por otra aplicación"}[audio.lastError] || audio.lastError;
+    msg += " Último problema: " + why + "."; bad = true;
+  }
+  el.textContent = msg; el.classList.toggle("bad", bad);
+}
+function openAudioHelp(){
+  $("#audioHint").hidden = true; $("#audioHelp").hidden = false;
+  loadVoices();
+  try { $("#audioHelp").scrollIntoView({behavior: reduceMotion ? "auto" : "smooth", block:"nearest"}); } catch (e) {}
+}
+if (hasTTS){
+  loadVoices();
+  if (synth.addEventListener) synth.addEventListener("voiceschanged", loadVoices);
+  else synth.onvoiceschanged = loadVoices;
+  setTimeout(loadVoices, 800); setTimeout(loadVoices, 2500);
+}
+renderAudioStatus();
+$("#openAudio").addEventListener("click", function(){ if ($("#audioHelp").hidden) openAudioHelp(); else $("#audioHelp").hidden = true; });
+$("#hintOpen").addEventListener("click", openAudioHelp);
+$("#closeAudio").addEventListener("click", function(){ $("#audioHelp").hidden = true; });
+$("#testAudio").addEventListener("click", function(){ audio.lastError = ""; speak("Привет! Это проверка звука."); });
+$("#voiceSel").addEventListener("change", function(e){
+  chosenVoice = e.target.value;
+  try { localStorage.setItem("azbuka-voz", chosenVoice); } catch (err) {}
+  audio.lastError = ""; speak("Привет! Это проверка звука.");
+});
+document.addEventListener("click", function(e){
+  var b = e.target.closest && e.target.closest("[data-say]");
+  if (b) speak(b.getAttribute("data-say"));
+});
+
+/* ---------- Alphabet tab ---------- */
+var currentLetter = null;
+function buildGrid(){
+  var g = $("#grid"); g.innerHTML = "";
+  LETTERS.forEach(function(l){
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "tile"; b.dataset.lo = l.lo;
+    b.setAttribute("aria-pressed", "false");
+    b.setAttribute("aria-label", l.up + ", se llama " + l.nameLat);
+    b.innerHTML = '<span class="p" lang="ru">' + l.up + l.lo + '</span><span class="c" lang="ru">' + l.up + l.lo + '</span><span class="bar"><i></i></span>';
+    b.addEventListener("click", function(){
+      selectLetter(l); speak(l.nameRu);
+      if (window.innerWidth <= 780) $("#detail").scrollIntoView({behavior: reduceMotion ? "auto" : "smooth", block:"start"});
+    });
+    g.appendChild(b);
+  });
+  refreshTiles();
+}
+function refreshTiles(){
+  var inPool = pool().map(function(l){ return l.lo; });
+  $$(".tile").forEach(function(t){
+    var s = prog[t.dataset.lo];
+    var pct = s && s.n ? Math.round(100 * s.ok / Math.max(s.n, 5)) : 0;
+    t.querySelector(".bar i").style.width = pct + "%";
+    t.classList.toggle("dim", inPool.indexOf(t.dataset.lo) < 0);
+  });
+}
+function underlineLetter(word, l){
+  return Array.from(word).map(function(c){ return (c === l.lo || c === l.up) ? "<u>" + c + "</u>" : c; }).join("");
+}
+function renderDetail(l){
+  var s = prog[l.lo];
+  var stat = s && s.n ? "En los ejercicios: " + s.ok + " de " + s.n + " correctas." : "Todavía no la has practicado en los ejercicios.";
+  $("#detail").innerHTML =
+    '<div class="pair"><span class="big-p" lang="ru">' + l.up + l.lo + '</span><span class="big-c" lang="ru">' + l.up + l.lo + '</span></div>' +
+    '<p class="name">Se llama <b lang="ru">' + l.nameRu + '</b> (' + esc(l.nameLat) + ').<span class="tag">' + GROUP_TAG[l.group] + '</span></p>' +
+    '<div class="actions"><button class="btn small" type="button" data-say="' + esc(l.nameRu) + '">▶ Letra</button><button class="btn small" type="button" data-say="' + esc(l.word) + '">▶ Palabra</button></div>' +
+    '<h3>Cómo suena</h3><p>' + esc(l.sound) + '</p>' +
+    '<h3>Ejemplo</h3><p><span class="ex-p" lang="ru">' + underlineLetter(l.word, l) + '</span><span class="ex-c" lang="ru">' + l.word + '</span><br>Se lee «' + esc(l.pron) + '» y significa «' + esc(l.meaning) + '».</p>' +
+    (l.hand ? '<h3>A mano</h3><p>' + esc(l.hand) + '</p>' : '') +
+    '<p class="stat">' + stat + '</p>';
+}
+function selectLetter(l){
+  currentLetter = l;
+  $$(".tile").forEach(function(t){ t.setAttribute("aria-pressed", t.dataset.lo === l.lo ? "true" : "false"); });
+  renderDetail(l);
+}
+
+/* ---------- Quiz engine ---------- */
+var ROUND = 10;
+function gradeFor(ok){
+  if (ok >= 9) return ["5","отлично","excelente"];
+  if (ok >= 7) return ["4","хорошо","bien"];
+  if (ok >= 5) return ["3","удовлетворительно","aprobado"];
+  return ["2","неудовлетворительно","toca repasar"];
+}
+function makeQuiz(root, gen){
+  root.innerHTML =
+    '<div class="quiz-head"><span class="qn"></span><span class="qs"></span></div>' +
+    '<div class="prompt"></div>' +
+    '<div class="options" role="group" aria-label="Opciones"></div>' +
+    '<div class="feedback" aria-live="polite"></div>' +
+    '<div class="next-row"><button class="btn primary next" type="button" hidden>Siguiente</button></div>' +
+    '<div class="result" hidden></div>';
+  var el = {head:$(".quiz-head", root), qn:$(".qn", root), qs:$(".qs", root), prompt:$(".prompt", root), options:$(".options", root), feedback:$(".feedback", root), next:$(".next", root), nextRow:$(".next-row", root), result:$(".result", root)};
+  var st = {i:0, ok:0, missed:[], cur:null, answered:false};
+
+  function showParts(on){ [el.head, el.prompt, el.options, el.feedback, el.nextRow].forEach(function(x){ x.hidden = !on; }); el.result.hidden = on; }
+  function newQ(){
+    st.answered = false; st.cur = gen.make();
+    showParts(true);
+    el.qn.textContent = "Pregunta " + (st.i + 1) + " de " + ROUND;
+    el.qs.textContent = st.ok + (st.ok === 1 ? " correcta" : " correctas");
+    el.prompt.innerHTML = ""; st.cur.render(el.prompt);
+    el.options.innerHTML = "";
+    st.cur.options.forEach(function(o, k){
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "opt" + (o.cls ? " " + o.cls : "");
+      b.innerHTML = '<span class="k">' + (k + 1) + '</span>' + o.html;
+      b.addEventListener("click", function(){ answer(k); });
+      el.options.appendChild(b);
+    });
+    el.feedback.innerHTML = ""; el.next.hidden = true;
+    if (st.cur.onShow) st.cur.onShow();
+  }
+  function answer(k){
+    if (st.answered || !st.cur) return;
+    st.answered = true;
+    var o = st.cur.options[k], btns = $$(".opt", el.options);
+    btns.forEach(function(b, j){ b.disabled = true; if (st.cur.options[j].correct) b.classList.add("right"); });
+    if (!o.correct) btns[k].classList.add("wrong");
+    if (o.correct) st.ok++; else st.missed.push(st.cur.missLabel);
+    if (st.cur.letter) record(st.cur.letter.lo, o.correct);
+    el.feedback.innerHTML = (o.correct ? '<strong class="ok">Bien.</strong> ' : '<strong class="ko">No es esa.</strong> ') + st.cur.explain();
+    if (st.cur.onAnswer) st.cur.onAnswer(o.correct);
+    st.i++;
+    el.qs.textContent = st.ok + (st.ok === 1 ? " correcta" : " correctas");
+    el.next.textContent = st.i >= ROUND ? "Ver la nota" : "Siguiente";
+    el.next.hidden = false;
+    try { el.next.focus({preventScroll:true}); } catch (e) { el.next.focus(); }
+  }
+  function showResult(){
+    var g = gradeFor(st.ok);
+    var missed = st.missed.filter(function(x, i, a){ return a.indexOf(x) === i; });
+    el.result.innerHTML =
+      '<div class="stamp" aria-hidden="true"><span class="grade" lang="ru">' + g[0] + '</span><span class="grade-word" lang="ru">' + g[1] + '</span></div>' +
+      '<p><b>' + st.ok + ' de ' + ROUND + '</b> correctas: ' + g[2] + '.</p>' +
+      (missed.length ? '<p class="muted">Para repasar: <span class="pl" lang="ru">' + missed.join(", ") + '</span></p>' : '<p class="muted">Ningún fallo en esta ronda.</p>') +
+      '<button class="btn primary again" type="button">Otra ronda</button>';
+    showParts(false);
+    $(".again", el.result).addEventListener("click", reset);
+    try { $(".again", el.result).focus({preventScroll:true}); } catch (e) {}
+  }
+  function reset(){ st.i = 0; st.ok = 0; st.missed = []; newQ(); }
+  el.next.addEventListener("click", function(){ if (st.i >= ROUND) showResult(); else newQ(); });
+  reset();
+  return {
+    answer: answer,
+    next: function(){ if (!el.next.hidden && !el.nextRow.hidden) el.next.click(); },
+    replay: function(){ if (st.cur && st.cur.replay && !st.answered) st.cur.replay(); },
+    rerender: function(){ if (st.cur && !st.answered){ el.prompt.innerHTML = ""; st.cur.render(el.prompt); } }
+  };
+}
+
+/* ---------- Exercise generators ---------- */
+var genListen = { make: function(){
+  var t = pickLetter();
+  var opts = shuffle([t].concat(distractors(t, SOUND_CONF))).map(function(l){
+    return {html:'<span lang="ru">' + l.up + " " + l.lo + '</span>', correct:l === t};
+  });
+  return {
+    letter:t, options:opts, missLabel:t.up + t.lo,
+    render: function(p){
+      if (hasTTS){
+        p.innerHTML = '<button class="btn big" type="button" data-say="' + esc(t.nameRu) + '">▶ Escuchar</button><p class="hint">¿Qué letra suena así?</p>' +
+          '<button class="linkbtn" type="button" data-noaudio>No oigo nada: mostrar el nombre escrito</button>';
+        var nb = p.querySelector("[data-noaudio]");
+        nb.addEventListener("click", function(){
+          p.innerHTML = '<div class="say">«' + esc(t.nameLat) + '»</div><p class="hint">¿Qué letra se llama así?</p>';
+          showHint();
+        });
+      } else {
+        p.innerHTML = '<div class="say">«' + esc(t.nameLat) + '»</div><p class="hint">¿Qué letra se llama así?</p>';
+      }
+    },
+    onShow: function(){ if (active === "escuchar" && userActed) speak(t.nameRu); },
+    replay: function(){ speak(t.nameRu); },
+    explain: function(){ return 'Es <span class="pl" lang="ru">' + t.up + " " + t.lo + '</span>, que se llama «' + esc(t.nameLat) + '». ' + esc(t.sound); }
+  };
+}};
+
+var genCursive = { make: function(){
+  var t = pickLetter(), upper = Math.random() < 0.3;
+  var show = function(l){ return upper ? l.up : l.lo; };
+  var opts = shuffle([t].concat(distractors(t, SHAPE_CONF))).map(function(l){
+    return {html:'<span lang="ru">' + show(l) + '</span>', correct:l === t};
+  });
+  return {
+    letter:t, options:opts, missLabel:t.up + t.lo,
+    render: function(p){
+      p.innerHTML = '<div class="glyph" lang="ru">' + show(t) + '</div><p class="hint">¿Qué ' + (upper ? "mayúscula" : "minúscula") + ' de imprenta es esta?</p>';
+    },
+    explain: function(){
+      return '<span class="cur-inline" lang="ru">' + t.up + t.lo + '</span> es <span class="pl" lang="ru">' + t.up + " " + t.lo + '</span> («' + esc(t.nameLat) + '»). ' + (t.hand ? esc(t.hand) + " " : "") +
+        '<button class="btn small" type="button" data-say="' + esc(t.nameRu) + '">▶ Oír</button>';
+    }
+  };
+}};
+
+var lastWord = null;
+var genRead = { make: function(){
+  var set = WORDS[$("#wordSet").value].map(function(w){ return {w:w[0], pron:w[1], m:w[2]}; });
+  var cands = set.filter(function(x){ return x.w !== lastWord; });
+  var w = cands[Math.floor(Math.random() * cands.length)]; lastWord = w.w;
+  var mode = $("#readMode").value, cursive = mode === "cursive" || (mode === "mix" && Math.random() < 0.5);
+  var right = stripAccents(w.pron), used = [right], wrong = [];
+  var nv = naiveReading(w.w);
+  if (nv && used.indexOf(nv) < 0){ wrong.push(nv); used.push(nv); }
+  var len = right.length;
+  var others = shuffle(set.filter(function(o){ return o !== w; }))
+    .sort(function(a, b){ return Math.abs(stripAccents(a.pron).length - len) - Math.abs(stripAccents(b.pron).length - len); })
+    .slice(0, 7);
+  others = shuffle(others);
+  for (var i = 0; i < others.length && wrong.length < 3; i++){
+    var r = stripAccents(others[i].pron);
+    if (used.indexOf(r) < 0){ wrong.push(r); used.push(r); }
+  }
+  var opts = shuffle([{t:right, c:true}].concat(wrong.map(function(x){ return {t:x, c:false}; }))).map(function(o){
+    return {html:esc(o.t), correct:o.c, cls:"lat"};
+  });
+  return {
+    options:opts, missLabel:w.w,
+    render: function(p){
+      p.innerHTML = cursive
+        ? '<div class="word-c" lang="ru">' + w.w + '</div><p class="hint">En cursiva. ¿Cómo suena?</p>'
+        : '<div class="word-p" lang="ru">' + w.w + '</div><p class="hint">¿Cómo suena?</p>';
+    },
+    onAnswer: function(){ speak(w.w); },
+    explain: function(){
+      return '<span class="pl" lang="ru">' + w.w + '</span> (en ' + (cursive ? 'imprenta' : 'cursiva') + ': <span class="cur-inline" lang="ru" style="' + (cursive ? 'font-family:var(--serif);color:inherit;font-size:1.1em' : '') + '">' + w.w + '</span>) se lee «' + esc(w.pron) + '» y significa «' + esc(w.m) + '». ' +
+        '<button class="btn small" type="button" data-say="' + esc(w.w) + '">▶ Oír</button>';
+    }
+  };
+}};
+
+/* ---------- Writing pad ---------- */
+var pad = {idx:0, mode:"letter", guide:true, w:0, h:0, built:false};
+var bgC = $("#padBg"), inkC = $("#padInk");
+function padPool(){ return pool(); }
+function padLetter(){ var p = padPool(); if (pad.idx >= p.length) pad.idx = 0; return p[pad.idx]; }
+function sizePad(){
+  var box = $("#pad"), w = box.clientWidth, h = box.clientHeight;
+  if (!w || !h) return;
+  var dpr = Math.max(1, Math.min(3, window.devicePixelRatio || 1));
+  [bgC, inkC].forEach(function(c){
+    c.width = Math.round(w * dpr); c.height = Math.round(h * dpr);
+    c.style.width = w + "px"; c.style.height = h + "px";
+    c.getContext("2d").setTransform(dpr, 0, 0, dpr, 0, 0);
+  });
+  pad.w = w; pad.h = h;
+  drawPadBg();
+}
+function drawPadBg(){
+  if (!pad.w) return;
+  var ctx = bgC.getContext("2d"), w = pad.w, h = pad.h;
+  ctx.clearRect(0, 0, w, h);
+  var rule = cssVar("--rule-strong"), faint = cssVar("--rule"), margin = cssVar("--margin"), ink = cssVar("--ink");
+  var xh = Math.round(h * 0.19), base = Math.round(h * 0.64), top = base - xh, asc = base - 2 * xh, desc = base + xh;
+  // Slanted guide lines at 65 degrees, as in a Russian copybook
+  var dx = h / Math.tan(65 * Math.PI / 180);
+  ctx.strokeStyle = faint; ctx.lineWidth = 1;
+  for (var x = -dx; x < w + dx; x += 30){ ctx.beginPath(); ctx.moveTo(x, h); ctx.lineTo(x + dx, 0); ctx.stroke(); }
+  [[asc, faint, 1], [top, rule, 1.4], [base, rule, 1.4], [desc, faint, 1]].forEach(function(r){
+    ctx.strokeStyle = r[1]; ctx.lineWidth = r[2];
+    ctx.beginPath(); ctx.moveTo(0, r[0] + 0.5); ctx.lineTo(w, r[0] + 0.5); ctx.stroke();
+  });
+  ctx.strokeStyle = margin; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(20.5, 0); ctx.lineTo(20.5, h); ctx.stroke();
+  if (!pad.guide) return;
+  var l = padLetter(); if (!l) return;
+  var fam = cssVar("--script") || "serif";
+  ctx.font = "100px " + fam;
+  var m = ctx.measureText("х"), ratio = (m.actualBoundingBoxAscent || 42) / 100;
+  if (!(ratio > 0.2 && ratio < 0.8)) ratio = 0.42;
+  var size = Math.max(24, Math.min(h * 0.75, xh / ratio));
+  ctx.font = size + "px " + fam; ctx.textBaseline = "alphabetic"; ctx.fillStyle = ink;
+  var text = pad.mode === "letter" ? l.up + l.lo : l.word;
+  var tw = ctx.measureText(text).width, gap = size * (pad.mode === "letter" ? 0.55 : 0.8), xpos = 34, count = 0;
+  while (xpos + tw <= w - 8 || count === 0){
+    ctx.globalAlpha = count === 0 ? 0.92 : 0.17;
+    ctx.fillText(text, xpos, base);
+    xpos += tw + gap; count++;
+    if (count > 12) break;
+  }
+  ctx.globalAlpha = 1;
+}
+function clearInk(){ if (pad.w) inkC.getContext("2d").clearRect(0, 0, pad.w, pad.h); }
+function renderPadHead(){
+  var l = padLetter(); if (!l) return;
+  $("#padPrint").textContent = l.up + l.lo;
+  $("#padCursive").textContent = pad.mode === "letter" ? l.up + l.lo : l.word;
+  $("#padSay").setAttribute("data-say", pad.mode === "letter" ? l.nameRu : l.word);
+  $("#padNote").innerHTML = pad.mode === "letter"
+    ? (l.hand ? esc(l.hand) : "Se llama «" + esc(l.nameLat) + "». Copia primero sobre el modelo y luego quita el modelo y escríbela sola.")
+    : 'Palabra de ejemplo: <span class="pl" lang="ru">' + l.word + '</span>, «' + esc(l.pron) + '», ' + esc(l.meaning) + '. En cursiva las letras se enlazan sin levantar la mano.';
+}
+function refreshPad(clear){ renderPadHead(); drawPadBg(); if (clear) clearInk(); }
+(function setupInk(){
+  var drawing = false, last = null;
+  function pos(e){ var r = inkC.getBoundingClientRect(); return {x:e.clientX - r.left, y:e.clientY - r.top}; }
+  function seg(ctx, a, b, e){
+    ctx.strokeStyle = cssVar("--ink");
+    ctx.lineWidth = (e.pointerType === "pen" && e.pressure) ? 1.4 + e.pressure * 3.2 : 3.2;
+    ctx.lineCap = "round"; ctx.lineJoin = "round";
+    ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+  }
+  inkC.addEventListener("pointerdown", function(e){
+    e.preventDefault(); drawing = true; last = pos(e);
+    try { inkC.setPointerCapture(e.pointerId); } catch (err) {}
+    var ctx = inkC.getContext("2d"); ctx.fillStyle = cssVar("--ink");
+    ctx.beginPath(); ctx.arc(last.x, last.y, 1.6, 0, Math.PI * 2); ctx.fill();
+  });
+  inkC.addEventListener("pointermove", function(e){
+    if (!drawing) return;
+    var ctx = inkC.getContext("2d");
+    var evs = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
+    if (!evs.length) evs = [e];
+    evs.forEach(function(ev){ var p = pos(ev); seg(ctx, last, p, ev); last = p; });
+  });
+  ["pointerup", "pointercancel"].forEach(function(t){ inkC.addEventListener(t, function(){ drawing = false; }); });
+})();
+$("#padPrev").addEventListener("click", function(){ var n = padPool().length; pad.idx = (pad.idx - 1 + n) % n; refreshPad(true); });
+$("#padNext").addEventListener("click", function(){ var n = padPool().length; pad.idx = (pad.idx + 1) % n; refreshPad(true); });
+$("#padClear").addEventListener("click", clearInk);
+$("#padGuide").addEventListener("change", function(e){ pad.guide = e.target.checked; drawPadBg(); });
+$$(".seg button").forEach(function(b){
+  b.addEventListener("click", function(){
+    pad.mode = b.dataset.mode;
+    $$(".seg button").forEach(function(x){ x.setAttribute("aria-checked", x === b ? "true" : "false"); });
+    refreshPad(true);
+  });
+});
+
+/* ---------- Tabs ---------- */
+var TABS = ["alfabeto", "escuchar", "cursiva", "leer", "escribir"];
+var active = "alfabeto", quizzes = {}, userActed = false;
+["pointerdown", "keydown"].forEach(function(t){ document.addEventListener(t, function(){ userActed = true; }, {capture:true}); });
+function ensureBuilt(name){
+  if (name === "escuchar" && !quizzes.escuchar) quizzes.escuchar = makeQuiz($("#quiz-escuchar"), genListen);
+  if (name === "cursiva" && !quizzes.cursiva) quizzes.cursiva = makeQuiz($("#quiz-cursiva"), genCursive);
+  if (name === "leer" && !quizzes.leer) quizzes.leer = makeQuiz($("#quiz-leer"), genRead);
+  if (name === "escribir"){ sizePad(); refreshPad(false); }
+}
+function openTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "alfabeto";
+  active = name;
+  $$('.tabs [role="tab"]').forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    if (on && focus) b.focus();
+  });
+  TABS.forEach(function(t){ $("#tab-" + t).hidden = t !== name; });
+  var fresh = !quizzes[name];
+  ensureBuilt(name);
+  if (name === "escuchar" && quizzes.escuchar){ quizzes.escuchar.rerender(); if (!fresh) quizzes.escuchar.replay(); }
+  try { localStorage.setItem("azbuka-pestana", name); } catch (e) {}
+}
+$$('.tabs [role="tab"]').forEach(function(b){ b.addEventListener("click", function(){ openTab(b.dataset.tab); }); });
+$(".tabs").addEventListener("keydown", function(e){
+  var i = TABS.indexOf(active);
+  if (e.key === "ArrowRight"){ e.preventDefault(); openTab(TABS[(i + 1) % TABS.length], true); }
+  if (e.key === "ArrowLeft"){ e.preventDefault(); openTab(TABS[(i - 1 + TABS.length) % TABS.length], true); }
+});
+document.addEventListener("keydown", function(e){
+  var tag = (e.target && e.target.tagName) || "";
+  if (tag === "SELECT" || tag === "INPUT" || tag === "TEXTAREA" || e.metaKey || e.ctrlKey || e.altKey) return;
+  var q = quizzes[active]; if (!q) return;
+  if (/^[1-4]$/.test(e.key)){ e.preventDefault(); q.answer(Number(e.key) - 1); }
+  else if (e.key === "Enter" && tag !== "BUTTON"){ e.preventDefault(); q.next(); }
+});
+
+/* ---------- Global controls ---------- */
+$("#groupSel").addEventListener("change", function(){
+  lastPicked = null; pad.idx = 0; refreshTiles();
+  if (active === "escribir") refreshPad(true);
+});
+function loadHandFonts(){
+  if (!document.fonts || !document.fonts.load) return Promise.resolve();
+  return Promise.all([
+    document.fonts.load('40px "Marck Script"', "Аа Бб жшщ"),
+    document.fonts.load('40px "Bad Script"', "Аа Бб жшщ")
+  ]).catch(function(){});
+}
+$("#handSel").addEventListener("change", function(e){
+  document.documentElement.setAttribute("data-hand", e.target.value);
+  try { localStorage.setItem("azbuka-mano", e.target.value); } catch (err) {}
+  loadHandFonts().then(drawPadBg);
+  drawPadBg();
+});
+$("#resetProg").addEventListener("click", function(){
+  if (!window.confirm("¿Borrar todos tus aciertos guardados en este navegador?")) return;
+  prog = {}; saveProg(); refreshTiles(); if (currentLetter) renderDetail(currentLetter);
+});
+var resizeTimer = null;
+window.addEventListener("resize", function(){
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(function(){ if (active === "escribir") sizePad(); }, 150);
+});
+if (window.matchMedia){
+  var mq = window.matchMedia("(prefers-color-scheme: dark)");
+  var onScheme = function(){ drawPadBg(); };
+  if (mq.addEventListener) mq.addEventListener("change", onScheme); else if (mq.addListener) mq.addListener(onScheme);
+}
+
+/* ---------- Start ---------- */
+try {
+  var savedHand = localStorage.getItem("azbuka-mano");
+  if (savedHand === "1" || savedHand === "2"){ $("#handSel").value = savedHand; document.documentElement.setAttribute("data-hand", savedHand); }
+} catch (e) {}
+buildGrid();
+selectLetter(LETTERS[0]);
+var startTab = "alfabeto";
+try { startTab = localStorage.getItem("azbuka-pestana") || "alfabeto"; } catch (e) {}
+openTab(startTab);
+loadHandFonts().then(function(){ if (active === "escribir") drawPadBg(); });
+
+/* ---------- Offline app ---------- */
+if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)){
+  window.addEventListener("load", function(){
+    navigator.serviceWorker.register("sw.js").then(function(){ return navigator.serviceWorker.ready; }).then(function(reg){
+      // Hand the worker the font files this device actually downloaded, so they keep working offline
+      function sendFonts(){
+        try {
+          var urls = performance.getEntriesByType("resource").map(function(e){ return e.name; })
+            .filter(function(u){ return /^https:\/\/fonts\.(googleapis|gstatic)\.com\//.test(u); });
+          var w = reg.active || navigator.serviceWorker.controller;
+          if (urls.length && w) w.postMessage({type:"cache-urls", urls:urls});
+        } catch (e) {}
+      }
+      sendFonts();
+      loadHandFonts().then(function(){ setTimeout(sendFonts, 1200); });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ setTimeout(sendFonts, 2500); });
+      $("#offlineNote").hidden = false;
+    }).catch(function(){});
+  });
+}
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ if (active === "escribir") drawPadBg(); });
+})();
+</script>
+</body>
+</html>
